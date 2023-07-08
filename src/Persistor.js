@@ -1,9 +1,13 @@
-class Persistor {
+const EventEmitter = require("eventemitter3");
+
+class Persistor extends EventEmitter {
   constructor(
     store,
     Storage,
     { name = "app", version = 0, migrations = {} } = {}
   ) {
+    super();
+
     this.store = store;
 
     this.Storage = Storage;
@@ -52,6 +56,8 @@ class Persistor {
     */
 
     this.persist();
+
+    this.emit("init");
   }
 
   // generate the content for the Storage item and write it
