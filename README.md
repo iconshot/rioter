@@ -1,11 +1,11 @@
-# [Shoota](https://shoota.dev/)
+# [Detonator](https://detonator.dev/)
 
-JavaScript library for state management.
+JavaScript library for handling state management efficiently.
 
 ## Installation
 
 ```
-npm i shoota
+npm i detonator
 ```
 
 ## Get started
@@ -15,7 +15,7 @@ npm i shoota
 An `Atom` is an object that will keep some data.
 
 ```js
-import { Atom } from "shoota";
+import { Atom } from "detonator";
 
 class CounterAtom extends Atom {
   constructor(store) {
@@ -37,7 +37,7 @@ class CounterAtom extends Atom {
 A `Store` is formed by a group of `Atom`s.
 
 ```js
-import { Store } from "shoota";
+import { Store } from "detonator";
 
 import CounterAtom from "./CounterAtom";
 
@@ -67,7 +67,7 @@ store.on("state", (state) => {
 `Persistor` will add persistence to your `Store`.
 
 ```js
-import { Store, Persistor } from "shoota";
+import { Store, Persistor } from "detonator";
 
 import CounterAtom from "./CounterAtom";
 
@@ -84,10 +84,10 @@ persistor.init().then(() => {
 });
 ```
 
-For `Persistor` to work the `Atom` we want to persist has to override two methods.
+For `Persistor` to work the `Atom` we want to persist has to override two methods: `hydrate` and `persist`.
 
 ```js
-import { Atom } from "shoota";
+import { Atom } from "detonator";
 
 class CounterAtom extends Atom {
   constructor(store) {

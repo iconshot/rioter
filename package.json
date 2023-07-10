@@ -1,11 +1,11 @@
 {
-  "name": "shoota",
-  "version": "2.0.2",
-  "description": "Handle state management.",
-  "homepage": "https://shoota.dev",
+  "name": "detonator",
+  "version": "1.0.0",
+  "description": "Manage state efficiently.",
+  "homepage": "https://detonator.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/iconshot/shoota.git"
+    "url": "https://github.com/iconshot/detonator.git"
   },
   "main": "index.js",
   "keywords": [
