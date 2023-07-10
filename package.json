@@ -1,7 +1,7 @@
 {
   "name": "detonator",
-  "version": "1.0.0",
-  "description": "Manage state efficiently.",
+  "version": "1.0.1",
+  "description": "Handle state management efficiently.",
   "homepage": "https://detonator.dev",
   "repository": {
     "type": "git",
