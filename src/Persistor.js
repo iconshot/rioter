@@ -46,7 +46,7 @@ class Persistor extends EventEmitter {
 
     // start listening to updates
 
-    this.store.on("state", () => this.persist());
+    this.store.on("update", () => this.persist());
 
     /*
     

@@ -6,7 +6,7 @@ class Store extends EventEmitter {
 
     this.state = {};
 
-    this.updateTimeout = null;
+    this.timeout = null;
 
     this.populate(Atoms);
   }
@@ -28,11 +28,9 @@ class Store extends EventEmitter {
   // group multiple calls into a single "emit" call
 
   update() {
-    clearTimeout(this.updateTimeout);
+    clearTimeout(this.timeout);
 
-    this.updateTimeout = setTimeout(() => {
-      this.emit("state", this.state);
-    });
+    this.timeout = setTimeout(() => this.emit("update"));
   }
 }
 

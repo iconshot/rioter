@@ -48,16 +48,16 @@ const state = store.getState();
 // state.counter.number = 0
 ```
 
-Every time there's a change in one of the `Atom`s, `Store` will emit a `state` event.
+Every time there's a change in one of the `Atom`s, `Store` will emit an `update` event.
 
 ```js
-setTimeout(() => {
-  const state = store.getState();
+const state = store.getState();
 
+setTimeout(() => {
   state.counter.increment();
 }, 5000); // execute after 5 seconds
 
-store.on("state", (state) => {
+store.on("update", () => {
   // state.counter.number = 1
 });
 ```
@@ -73,18 +73,14 @@ import CounterAtom from "./CounterAtom";
 
 const store = new Store({ counter: CounterAtom });
 
-const persistor = new Persistor(store, window.localStorage, {
-  name: "app", // storage item
-  version: 1, // content version
-  migrations: { 1: (data) => data }, // data migrations
-});
+const persistor = new Persistor(store, window.localStorage);
 
 persistor.init().then(() => {
   // persistor has been loaded
 });
 ```
 
-For `Persistor` to work the `Atom` we want to persist has to override two methods: `hydrate` and `persist`.
+We can choose which atoms are persisted just by overriding two methods: `hydrate` and `persist`.
 
 ```js
 import { Atom } from "detonator";
@@ -104,7 +100,9 @@ class CounterAtom extends Atom {
   }
 
   // persist will be called every time there's an update in the store,
-  // the data this method returns is what will be saved in Storage
+  // the data this method returns is what will be saved in Storage,
+  // if null is returned, this atom will not be persisted,
+  // null is returned by default
 
   persist() {
     return this.number;
@@ -115,7 +113,7 @@ class CounterAtom extends Atom {
   increment() {
     this.number++;
 
-    this.update(); // notify the store of an update
+    this.update();
   }
 }
 ```
