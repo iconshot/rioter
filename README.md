@@ -1,11 +1,11 @@
-# [Detonator](https://detonator.dev/)
+# [Rioter](https://rioter.dev/)
 
 JavaScript library for handling state management efficiently.
 
 ## Installation
 
 ```
-npm i detonator
+npm i rioter
 ```
 
 ## Get started
@@ -15,7 +15,7 @@ npm i detonator
 An `Atom` is an object that will keep some data.
 
 ```js
-import { Atom } from "detonator";
+import { Atom } from "rioter";
 
 class CounterAtom extends Atom {
   constructor(store) {
@@ -37,7 +37,7 @@ class CounterAtom extends Atom {
 A `Store` is formed by a group of `Atom`s.
 
 ```js
-import { Store } from "detonator";
+import { Store } from "rioter";
 
 import CounterAtom from "./CounterAtom";
 
@@ -67,7 +67,7 @@ store.on("update", () => {
 `Persistor` will add persistence to your `Store`.
 
 ```js
-import { Store, Persistor } from "detonator";
+import { Store, Persistor } from "rioter";
 
 import CounterAtom from "./CounterAtom";
 
@@ -83,7 +83,7 @@ persistor.init().then(() => {
 We can choose which atoms are persisted just by overriding two methods: `hydrate` and `persist`.
 
 ```js
-import { Atom } from "detonator";
+import { Atom } from "rioter";
 
 class CounterAtom extends Atom {
   constructor(store) {

@@ -1,11 +1,11 @@
 {
-  "name": "detonator",
-  "version": "1.1.0",
+  "name": "rioter",
+  "version": "1.0.0",
   "description": "Handle state management efficiently.",
-  "homepage": "https://detonator.dev",
+  "homepage": "https://rioter.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/iconshot/detonator.git"
+    "url": "https://github.com/iconshot/rioter.git"
   },
   "main": "index.js",
   "keywords": [
