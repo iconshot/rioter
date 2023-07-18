@@ -55,7 +55,7 @@ class Persistor extends EventEmitter {
 
     */
 
-    this.persist();
+    await this.persist();
 
     this.emit("init");
   }
