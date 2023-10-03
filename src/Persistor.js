@@ -16,8 +16,6 @@ class Persistor extends EventEmitter {
 
     this.version = version;
 
-    // migrations are sorted in migrate()
-
     this.migrations = migrations;
   }
 
@@ -102,12 +100,14 @@ class Persistor extends EventEmitter {
     await Storage.setItem(this.name, value);
   }
 
+  // get versions from current version (exclusive) to this.version (inclusive)
+
   migrate(data, version) {
-    // get versions from current version (exclusive) to this.version (inclusive)
+    // already sorted by JS
 
     const keys = Object.keys(this.migrations)
-      .filter((key) => key > version && key <= this.version)
-      .sort((a, b) => a - b);
+      .map((key) => parseInt(key))
+      .filter((key) => key > version && key <= this.version);
 
     // migrate data
 
